@@ -12,7 +12,7 @@ typedef struct {
      int k;
 } ngram;
 
-ngram * start_stor();
+ngram * start_stor(int n, char ** pref, char * suf, int k);
 
 ngram * app_ngram (ngram * start);
 
