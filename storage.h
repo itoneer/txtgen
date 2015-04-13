@@ -18,5 +18,5 @@ void init_next_pref (suff * s, char ** pref, char * suf);
 
 ngram * find_ngram (ngram * start, char ** pref, char * suf);
 
-ngram * ap_ngram (ngram * start, char ** pref, char * suf);
+ngram * app_ngram (ngram * start, char ** pref, char * suf);
 }
