@@ -8,13 +8,15 @@ typdef struct {
 
 typedef struct {
      char **prefix;
-     suff * sufix;
+     suff **sufix;
      int k;
 } ngram;
 
 ngram * start_stor(int n, char ** pref, char * suf, int k);
 
-ngram * app_ngram (ngram * start);
+void init_next_pref (suff * s, char ** pref, char * suf);
 
-ngram * find_ngram (ngram * start, char * a);
+ngram * find_ngram (ngram * start, char ** pref, char * suf);
+
+ngram * ap_ngram (ngram * start, char ** pref, char * suf);
 }
