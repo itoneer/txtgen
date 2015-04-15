@@ -1,4 +1,5 @@
-#include <>
+#ifndef _STORAGE_H_
+#define _STORAGE_H_
 
 typdef struct {
      char * word;
@@ -22,3 +23,5 @@ void app_ngram (ngram * start, char ** pref, char * suf, int n);
 
 int pref_cmp (char ** a, char ** b, int n)
 }
+
+#endif
