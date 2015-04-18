@@ -5,9 +5,7 @@
 
 ngram * start_stor(int n, char ** pref, char * suf)
 {
-     ngram * ng = NULL;
-     char ** p = pref; 
-     ng = malloc (sizeof (ngram));
+     ngram * ng = malloc (sizeof (ngram));
      if (ng == NULL) goto erall;
      ng->prefix = malloc ((n-1) * sizeof (char*));
      if (ng->prefix == NULL) goto erall;
@@ -20,10 +18,12 @@ ngram * start_stor(int n, char ** pref, char * suf)
      }
      ng->sufix = malloc (sizeof (suff*));
      if (ng->sufix == NULL) goto erall;
+     ng->sufix[0] = malloc (sizeof (suff));
+     if (ng->sufix[0] == NULL) goto erall;
      ng->sufix[0]->word = malloc (strlen(suf) * sizeof char);
      if (ng->sufix[0]->word == NULL) goto erall;
-     strcpy(ng->sufix[0]->word, suf, n);
-     init_next_pref(ng->sufix[0], pref, suf)
+     strcpy(ng->sufix[0]->word, suf);
+     init_next_pref(ng->sufix[0], pref, suf, n)
      ng->sufix[0]->prob = 1;
      ng->k = 1;
      return ng;
@@ -58,7 +58,7 @@ ngram * find_ngram (ngram * start, char ** pref, int n)
           if (s->sufix[i]->next == NULL)
           {
              #ifdef DEBUG 
-             printf("ngram %g nie posiada wskaźnika na następny ngram", s->suff[i]->next);
+             printf("ngram %g nie posiada wskaźnika na dany ngram", s->suff[i]->next);
              #endif
              continue;
           }
@@ -82,6 +82,7 @@ void app_ngram (ngram * start, char ** pref, char * suf, int n)
           }
      ng->k ++;
      ng->sufix = (suff**) realloc (ng->sufix, ng->k * sizeof (suff*));
+     ng->sufix[ng->k-1] = malloc (sizeof (suff));
      ng->sufix[ng->k-1]->word = malloc (strlen(suf) * sizeof (char));
      strcpy (n->sufix[ng->k-1]->word, suf);
      n->sufix[ng->k-1]->prob = 1;
