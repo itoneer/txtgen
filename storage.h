@@ -22,6 +22,7 @@ ngram * find_ngram (ngram * start, char ** pref, char * suf, int n);
 void app_ngram (ngram * start, char ** pref, char * suf, int n);
 
 int pref_cmp (char ** a, char ** b, int n)
-}
+
+void cleanup (ngram * ng);
 
 #endif
