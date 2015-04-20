@@ -11,6 +11,7 @@ typedef struct {
      char **prefix;
      suff **sufix;
      int k;
+     int sc;
 } ngram;
 
 ngram * start_stor(int n, char ** pref, char * suf);
